@@ -10,29 +10,41 @@ const layout = [
   { i: "summoned-skull", x: 4, y: 0, w: 1, h: 1 }
 ];
 
-export const MyResponsiveGrid = () => {
+const getLayouts = () => {
+  const savedLayouts = localStorage.getItem("grid-layout");
+
+  return savedLayouts ? JSON.parse(savedLayouts) : { lg: layout };
+};
+
+export const MyLocalStorageGrid = () => {
+  const handleLayoutChange = (layout, layouts) => {
+    localStorage.setItem("grid-layout", JSON.stringify(layouts));
+  };
+
   return (
+
     <ResponsiveGridLayout
-      layouts={{ lg: layout }}
+      layouts={getLayouts()}
       breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
       cols={{ lg: 5, md: 4, sm: 3, xs: 2, xxs: 1 }}
       rowHeight={300}
       width={1000}
-      style={{ background: "orange" }}
+      onLayoutChange={handleLayoutChange}
+      style={{ background: "tomato" }}
     >
-      <div style={{ background: "beige" }} key="blue-eyes-dragon">
+      <div key="blue-eyes-dragon" style={{ background: "beige" }} >
         <div>Blue Eyes Dragon</div>
       </div>
-      <div style={{ background: "beige" }} key="dark-magician">
+      <div key="dark-magician" style={{ background: "beige" }} >
         <div>Dark Magician</div>
       </div>
-      <div style={{ background: "beige" }} key="kuriboh">
+      <div key="kuriboh" style={{ background: "beige" }} >
         <div>Kuriboh</div>
       </div>
-      <div style={{ background: "beige" }} key="spell-caster">
+      <div key="spell-caster" style={{ background: "beige" }} >
         <div>Spell Caster</div>
       </div>
-      <div style={{ background: "beige" }} key="summoned-skull">
+      <div key="summoned-skull" style={{ background: "beige" }} >
         <div>Summoned Skull</div>
       </div>
     </ResponsiveGridLayout>

@@ -7,6 +7,7 @@ import './App.css';
 import 'react-grid-layout/css/styles.css'
 import 'react-resizable/css/styles.css'
 import { MyResponsiveGrid } from "./components/MyResponsiveGrid/MyResponsiveGrid";
+import { MyLocalStorageGrid } from "./components/MyLocalStorageGrid/MyLocalStorageGrid";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
       <MySecondGrid />
       <hr />
       <MyResponsiveGrid />
+      <hr />
+      <MyLocalStorageGrid />
     </React.Fragment>
   );
 }
